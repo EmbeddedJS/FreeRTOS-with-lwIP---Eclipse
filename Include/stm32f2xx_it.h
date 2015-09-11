@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    FreeRTOS\FreeRTOS_LowPower\Inc\stm32f2xx_it.h
+  * @file    LwIP/LwIP_UDPTCP_Echo_Server_Netconn_RTOS/Inc/stm32f2xx_it.h
   * @author  MCD Application Team
   * @version V1.1.0
   * @date    13-March-2014
@@ -23,18 +23,18 @@
   * limitations under the License.
   *
   ******************************************************************************
-  */
+  */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F2xx_IT_H
 #define __STM32F2xx_IT_H
 
 #ifdef __cplusplus
-extern "C" {
-#endif
+ extern "C" {
+#endif 
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f2xx.h"
+#include "main.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -50,7 +50,9 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-
+void DMA2_Stream3_IRQHandler(void);
+void DMA2_Stream6_IRQHandler(void);
+void SDIO_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif

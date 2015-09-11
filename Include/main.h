@@ -1,11 +1,10 @@
 /**
   ******************************************************************************
-  * @file    FreeRTOS\FreeRTOS_LowPower\Inc\main.h
+  * @file    LwIP/LwIP_UDPTCP_Echo_Server_Netconn_RTOS/Inc/main.h 
   * @author  MCD Application Team
   * @version V1.1.0
   * @date    13-March-2014
-  * @brief   This file contains all the functions prototypes for the main.c
-  *          file.
+  * @brief   Header for main.c module
   ******************************************************************************
   * @attention
   *
@@ -31,14 +30,45 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C" {
+ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f2xx_hal.h"
+#include "stm32f2xx_hal.h"       
+#include "stm322xg_eval.h"
 
 /* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
+/* Structure that include link thread parameters */
+/* Exported constants --------------------------------------------------------*/  
+ 
+/*Static IP ADDRESS*/
+ /*
+#define IP_ADDR0   192
+#define IP_ADDR1   168
+#define IP_ADDR2   0
+#define IP_ADDR3   10*/
+
+#define IP_ADDR0   172
+#define IP_ADDR1   16
+#define IP_ADDR2   101
+#define IP_ADDR3   193
+/*NETMASK*/
+#define NETMASK_ADDR0   255
+#define NETMASK_ADDR1   255
+#define NETMASK_ADDR2   255
+#define NETMASK_ADDR3   0
+
+/*Gateway Address*/
+ /*
+#define GW_ADDR0   192
+#define GW_ADDR1   168
+#define GW_ADDR2   0
+#define GW_ADDR3   1  */
+#define GW_ADDR0   172
+#define GW_ADDR1   168
+#define GW_ADDR2   100
+#define GW_ADDR3   1
+
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 

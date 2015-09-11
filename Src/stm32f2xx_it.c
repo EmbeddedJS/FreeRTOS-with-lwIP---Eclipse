@@ -1,10 +1,12 @@
 /**
   ******************************************************************************
-  * @file    FreeRTOS\FreeRTOS_LowPower\Src\stm32f2xx_it.c
+  * @file    LwIP/LwIP_UDPTCP_Echo_Server_Netconn_RTOS/Src/stm32f2xx_it.c 
   * @author  MCD Application Team
   * @version V1.1.0
   * @date    13-March-2014
   * @brief   Main Interrupt Service Routines.
+  *          This file provides template for all exceptions handler and 
+  *          peripherals interrupt service routine.
   ******************************************************************************
   * @attention
   *
@@ -26,14 +28,15 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f2xx_it.h"
-#include "main.h"
-#include "cmsis_os.h"
+#include "stm32f2xx_it.h" 
+#include "ethernetif.h" 
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
-extern void xPortSysTickHandler(void);
+extern void xPortSysTickHandler( void );
 /* Private functions ---------------------------------------------------------*/
 
 /******************************************************************************/
@@ -41,7 +44,7 @@ extern void xPortSysTickHandler(void);
 /******************************************************************************/
 
 /**
-  * @brief   This function handles NMI exception.
+  * @brief  This function handles NMI exception.
   * @param  None
   * @retval None
   */
@@ -117,7 +120,8 @@ void DebugMon_Handler(void)
   */
 void SysTick_Handler(void)
 {
-  xPortSysTickHandler();
+  HAL_IncTick();
+  xPortSysTickHandler() ;
 }
 
 /******************************************************************************/
@@ -127,6 +131,26 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f2xx.s).                                               */
 /******************************************************************************/
 /**
+* @brief  This function handles ethernet DMA interrupt request.
+* @param  None
+* @retval None
+*/
+void ETH_IRQHandler(void)
+{
+  ETHERNET_IRQHandler();
+}
+
+/**
+  * @brief  This function handles External line 10 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void EXTI15_10_IRQHandler(void)
+{ 
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
+}
+
+/**
   * @brief  This function handles PPP interrupt request.
   * @param  None
   * @retval None
@@ -134,6 +158,5 @@ void SysTick_Handler(void)
 /*void PPP_IRQHandler(void)
 {
 }*/
-
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
