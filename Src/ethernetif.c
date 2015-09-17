@@ -93,61 +93,51 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
   __GPIOA_CLK_ENABLE();
   __GPIOB_CLK_ENABLE();
   __GPIOC_CLK_ENABLE();
-  __GPIOF_CLK_ENABLE();
-  __GPIOG_CLK_ENABLE();
-  __GPIOH_CLK_ENABLE();
-  __GPIOI_CLK_ENABLE(); 
+  __GPIOE_CLK_ENABLE();
 
-/* Ethernet pins configuration ************************************************/
-   /*
-        ETH_MDIO -------------------------> PA2
-        ETH_MDC --------------------------> PC1
-        ETH_PPS_OUT ----------------------> PB5
-        ETH_MII_CRS ----------------------> PH2
-        ETH_MII_COL ----------------------> PH3
-        ETH_MII_RX_ER --------------------> PI10
-        ETH_MII_RXD2 ---------------------> PH6
-        ETH_MII_RXD3 ---------------------> PH7
-        ETH_MII_TX_CLK -------------------> PC3
-        ETH_MII_TXD2 ---------------------> PC2
-        ETH_MII_TXD3 ---------------------> PB8
-        ETH_MII_RX_CLK/ETH_RMII_REF_CLK---> PA1
-        ETH_MII_RX_DV/ETH_RMII_CRS_DV ----> PA7
-        ETH_MII_RXD0/ETH_RMII_RXD0 -------> PC4
-        ETH_MII_RXD1/ETH_RMII_RXD1 -------> PC5
-        ETH_MII_TX_EN/ETH_RMII_TX_EN -----> PG11
-        ETH_MII_TXD0/ETH_RMII_TXD0 -------> PG13
-        ETH_MII_TXD1/ETH_RMII_TXD1 -------> PG14
-                                                  */
+  /* ##########################################################################
+   * Re-construct. CRZ
+    ETH_MII_CRS ----------------------> PA0
+    ETH_MII_RX_CLK/ETH_RMII_REF_CLK---> PA1
+    ETH_MDIO -------------------------> PA2
+    ETH_MII_COL ----------------------> PA3
+    ETH_MII_RX_DV/ETH_RMII_CRS_DV ----> PA7
+    ETH_MII_RXD2 ---------------------> PB0
+    ETH_MII_RXD3 ---------------------> PB1
+    ETH_PPS_OUT ----------------------> PB5
+    ETH_MII_RX_ER --------------------> PB10
+    ETH_MII_TX_EN/ETH_RMII_TX_EN -----> PB11
+    ETH_MII_TXD0/ETH_RMII_TXD0 -------> PB12
+    ETH_MII_TXD1/ETH_RMII_TXD1 -------> PB13
+    ETH_MDC --------------------------> PC1
+    ETH_MII_TXD2 ---------------------> PC2
+    ETH_MII_TX_CLK -------------------> PC3
+    ETH_MII_RXD0/ETH_RMII_RXD0 -------> PC4
+    ETH_MII_RXD1/ETH_RMII_RXD1 -------> PC5
+    ETH_MII_TXD3 ---------------------> PE2
+   */
 
-  /* Configure PA1, PA2 , PA7 and PA8(MCO) */
-  GPIO_InitStructure.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_7 | GPIO_PIN_8;
+
+  //PA0, PA1, PA2, PA3, PA7 PA8
+  GPIO_InitStructure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2  | GPIO_PIN_3 | GPIO_PIN_7 | GPIO_PIN_8;
   GPIO_InitStructure.Speed = GPIO_SPEED_HIGH;
   GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStructure.Pull = GPIO_NOPULL ; 
   GPIO_InitStructure.Alternate = GPIO_AF11_ETH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-  /* Configure PB5 and PB8 */
-  GPIO_InitStructure.Pin = GPIO_PIN_5 | GPIO_PIN_8;
+  // PB0, PB1, PB5, PB10, PB11, PB12, PB13
+  GPIO_InitStructure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_5  | GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-  /* Configure PC1, PC2, PC3, PC4 and PC5 */
-  GPIO_InitStructure.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
-                             
-  /* Configure PG11, PG14 and PG13 */
-  GPIO_InitStructure.Pin =  GPIO_PIN_11 | GPIO_PIN_13 | GPIO_PIN_14;
-  HAL_GPIO_Init(GPIOG, &GPIO_InitStructure);
-
-  /* Configure PH2, PH3, PH6, PH7 */
-  GPIO_InitStructure.Pin = GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7;
-  HAL_GPIO_Init(GPIOH, &GPIO_InitStructure);
-
-  /* Configure PI10 */
-  GPIO_InitStructure.Pin = GPIO_PIN_10;
-  HAL_GPIO_Init(GPIOI, &GPIO_InitStructure);
   
+  // PC1 PC2 PC3 PC4 PC5
+  GPIO_InitStructure.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3  | GPIO_PIN_4 | GPIO_PIN_5;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+  // PE2
+  GPIO_InitStructure.Pin = GPIO_PIN_2;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStructure);
+
   /* Enable the Ethernet global Interrupt */
   HAL_NVIC_SetPriority(ETH_IRQn, 0x7, 0);
   HAL_NVIC_EnableIRQ(ETH_IRQn);
