@@ -221,7 +221,7 @@ static void ToggleLed4(void const * argument)
   for( ;; )
   {
     /* toggle LED4 each 250ms */
-    BSP_LED_Toggle(LED4);
+    BSP_LED_Toggle(LED3);
     osDelay(250);
   }
 }

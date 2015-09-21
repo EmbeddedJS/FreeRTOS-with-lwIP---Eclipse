@@ -51,7 +51,7 @@
 #define IP_ADDR0   172
 #define IP_ADDR1   16
 #define IP_ADDR2   101
-#define IP_ADDR3   193
+#define IP_ADDR3   222
 /*NETMASK*/
 #define NETMASK_ADDR0   255
 #define NETMASK_ADDR1   255
@@ -65,7 +65,7 @@
 #define GW_ADDR2   0
 #define GW_ADDR3   1  */
 #define GW_ADDR0   172
-#define GW_ADDR1   168
+#define GW_ADDR1   16
 #define GW_ADDR2   100
 #define GW_ADDR3   1
 

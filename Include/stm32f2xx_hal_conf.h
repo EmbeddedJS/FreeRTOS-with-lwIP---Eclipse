@@ -142,7 +142,7 @@
 
 /* Section 1 : Ethernet peripheral configuration */
 
-/* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
+/* MAC ADDRESS	: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
 #define MAC_ADDR0   2
 #define MAC_ADDR1   0
 #define MAC_ADDR2   0
@@ -159,7 +159,7 @@
 /* Section 2: PHY configuration section */
 
 /* DP83848 PHY Address*/ 
-#define DP83848_PHY_ADDRESS             0x01
+#define DP83848_PHY_ADDRESS             0x03
 /* PHY Reset delay these values are based on a 1 ms Systick interrupt*/ 
 #define PHY_RESET_DELAY                 ((uint32_t)0x000000FF)
 /* PHY Configuration delay */
