@@ -139,20 +139,20 @@ typedef enum
   */
 #define LEDn                             4
 
-#define LED1_PIN                         GPIO_PIN_6
-#define LED1_GPIO_PORT                   GPIOG
-#define LED1_GPIO_CLK_ENABLE()           __GPIOG_CLK_ENABLE()
-#define LED1_GPIO_CLK_DISABLE()          __GPIOG_CLK_DISABLE()
+#define LED1_PIN                         GPIO_PIN_13
+#define LED1_GPIO_PORT                   GPIOE
+#define LED1_GPIO_CLK_ENABLE()           __GPIOE_CLK_ENABLE()
+#define LED1_GPIO_CLK_DISABLE()          __GPIOE_CLK_DISABLE()
   
-#define LED2_PIN                         GPIO_PIN_8
-#define LED2_GPIO_PORT                   GPIOG
-#define LED2_GPIO_CLK_ENABLE()           __GPIOG_CLK_ENABLE()
-#define LED2_GPIO_CLK_DISABLE()          __GPIOG_CLK_DISABLE()
+#define LED2_PIN                         GPIO_PIN_14
+#define LED2_GPIO_PORT                   GPIOE
+#define LED2_GPIO_CLK_ENABLE()           __GPIOE_CLK_ENABLE()
+#define LED2_GPIO_CLK_DISABLE()          __GPIOE_CLK_DISABLE()
   
-#define LED3_PIN                         GPIO_PIN_9
-#define LED3_GPIO_PORT                   GPIOI
-#define LED3_GPIO_CLK_ENABLE()           __GPIOI_CLK_ENABLE()
-#define LED3_GPIO_CLK_DISABLE()          __GPIOI_CLK_DISABLE()
+#define LED3_PIN                         GPIO_PIN_15
+#define LED3_GPIO_PORT                   GPIOE
+#define LED3_GPIO_CLK_ENABLE()           __GPIOE_CLK_ENABLE()
+#define LED3_GPIO_CLK_DISABLE()          __GPIOE_CLK_DISABLE()
   
 #define LED4_PIN                         GPIO_PIN_7
 #define LED4_GPIO_PORT                   GPIOC
